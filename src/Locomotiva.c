@@ -222,8 +222,8 @@ int removeVagaoLocomotiva(ListaLocomotivas* locomotivas, int idLocomotiva, int i
 
 int trocarVagoes(Locomotivas* locomotiva, Vagao* vagao1, Vagao* vagao2){
     /*
-    Troca os dados de dois vagões.
-    Se o tipo dos vagões for diferente, uma mensagem de erro é exibida.
+    Troca dois vagões de uma locomotiva.
+    Se os vagões forem iguais, uma mensagem de erro é exibida.
     */
     if(vagao1 == vagao2) return 0;
     

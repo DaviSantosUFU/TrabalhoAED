@@ -22,16 +22,16 @@ void imprimeMenu(){
 }
 
 void menu(){
+    /*
+    Função que exibe o menu principal do programa e processa as opções escolhidas pelo usuário.
+    Inicializa a lista de locomotivas e chama as funções correspondentes às opções escolhidas.
+    */
     int opcao;
     ListaLocomotivas locomotivas;
     inicializaListaLocomotivas(&locomotivas);
     int id, idLocomotiva, tipo, posicao, idVagao, idvagao1, idvagao2;
     float peso_maximo, peso;
     do{
-        /*
-        Loop principal do menu.
-        Exibe as opções e executa a ação correspondente à opção escolhida pelo usuário.
-        */
         system("cls");
         imprimeMenu();
         scanf("%d", &opcao);
@@ -136,7 +136,6 @@ void menu(){
 int main(){
     /*
     Função principal do programa.
-    Inicializa a lista de locomotivas e chama a função de menu.
     */
     menu();
     return 0;
