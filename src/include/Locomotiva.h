@@ -10,7 +10,7 @@ typedef struct Locomotivas Locomotivas;
 typedef struct Locomotiva Locomotiva;
 typedef struct ListaLocomotivas ListaLocomotivas;
 
-struct Locomotiva {
+struct Locomotiva{
     int id;
     float peso_maximo;
     float peso;
@@ -18,12 +18,12 @@ struct Locomotiva {
     Vagoes* vagoes;
 };
 
-struct Locomotivas {
+struct Locomotivas{
     Locomotiva locomotiva;
     Locomotivas* proximo;
 };
 
-struct ListaLocomotivas {
+struct ListaLocomotivas{
     Locomotivas* primeiro;
     Locomotivas* ultimo;
 };

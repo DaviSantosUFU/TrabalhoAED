@@ -134,9 +134,6 @@ void menu(){
 }
 
 int main(){
-    /*
-    Função principal do programa.
-    */
     menu();
     return 0;
 }

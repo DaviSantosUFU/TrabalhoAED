@@ -26,9 +26,9 @@ Vagao createVagao(int tipo) {
         printf("\nDigite o número de assentos: ");
         scanf("%d", &vagao.dados.passageiro.assentos);
         printf("\nDigite o peso máximo do vagão: ");
-        scanf("%d", &vagao.dados.passageiro.peso_maximo);
+        scanf("%f", &vagao.dados.passageiro.peso_maximo);
         printf("\nDigite o peso atual do vagão: ");
-        scanf("%d", &vagao.dados.passageiro.peso_atual);
+        scanf("%f", &vagao.dados.passageiro.peso_atual);
     } else {
         printf("Tipo de vagao invalido!\n");
     }
@@ -97,7 +97,7 @@ int addVagao(Vagoes* vagoes, Vagao vagao, int posicao){
         return 0;
     }
     int id = vagao.tipo == CARGA ? vagao.dados.carga.id : vagao.dados.passageiro.id;
-    if(vagaoExiste(vagoes, vagao.dados.carga.id) || vagaoExiste(vagoes, vagao.dados.passageiro.id)) {
+    if(vagaoExiste(vagoes, id)) {
         printf("Vagao com ID %d ja existe!\n", id);
         return 0;
     }
@@ -183,14 +183,13 @@ void imprimeVagoes(Vagoes* vagoes){
                    temp->dados.carga.id, temp->dados.carga.carga,
                    temp->dados.carga.peso_maximo, temp->dados.carga.peso_atual);
         }else if(temp->tipo == PASSAGEIRO) {
-            printf("Vagao de Passageiros ID: %d, Assentos: %d, Peso Maximo: %d, Peso Atual: %d\n",
+            printf("Vagao de Passageiros ID: %d, Assentos: %d, Peso Maximo: %.2f, Peso Atual: %.2f\n",
                    temp->dados.passageiro.id, temp->dados.passageiro.assentos,
                    temp->dados.passageiro.peso_maximo, temp->dados.passageiro.peso_atual);
         }
         temp = temp->proximo;
     }
 }
-
 
 void liberaVagoes(Vagoes* vagoes){
     /*

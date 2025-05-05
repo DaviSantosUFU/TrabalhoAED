@@ -6,8 +6,6 @@ Locomotiva createLocomotiva(int id, float peso_maximo, float peso) {
     /*
     Cria uma locomotiva com os dados fornecidos.
     id: ID da locomotiva.
-    peso_maximo: Peso máximo que a locomotiva pode suportar.
-    peso_atual: Peso atual da locomotiva.
     peso: Peso da locomotiva.
     Retorna uma estrutura Locomotiva preenchida com os dados fornecidos.
     */
@@ -69,7 +67,7 @@ Locomotivas* buscaAnteriorLocomotiva(ListaLocomotivas* locomotivas, int id){
 
 int addLocomotiva(ListaLocomotivas* locomotivas, Locomotiva locomotiva){
     /*
-    Adiciona uma locomotiva à lista de locomotivas.
+    Adiciona uma locomotiva ao final de uma lista de locomotivas.
     Se a locomotiva já existir na lista, uma mensagem de erro é exibida.
     locomotivas: ponteiro para a estrutura ListaLocomotivas onde a locomotiva será adicionada.
     locomotiva: estrutura Locomotiva a ser adicionada.
@@ -118,7 +116,7 @@ int addVagaoLocomotiva(ListaLocomotivas* locomotivas, int idLocomotiva, Vagao va
         return 0;
     }
     if(addVagao(locomotiva->locomotiva.vagoes, vagao, posicao)){
-        locomotiva->locomotiva.peso_atual += vagao.tipo == CARGA ? vagao.dados.carga.peso_atual : vagao.dados.passageiro.peso_atual;
+        locomotiva->locomotiva.peso_atual += (vagao.tipo == CARGA ? vagao.dados.carga.peso_atual : vagao.dados.passageiro.peso_atual);
         return 1;
     }
     return 0;
@@ -129,9 +127,16 @@ int removeLocomotiva(ListaLocomotivas* locomotivas, int id){
     Remove uma locomotiva da lista de locomotivas pelo ID.
     Se a locomotiva não for encontrada, uma mensagem de erro é exibida.
     */
+   if(locomotivas->primeiro == NULL) {
+        printf("Lista de locomotivas vazia!\n");
+        return 0;
+    }
     Locomotivas* temp = locomotivas->primeiro;
     if(temp->locomotiva.id == id) {
         locomotivas->primeiro = temp->proximo;
+        if(temp->proximo == NULL) {
+            locomotivas->ultimo = NULL;
+        }
         liberaVagoes(temp->locomotiva.vagoes);
         free(temp);
         return 1;
@@ -240,8 +245,8 @@ int trocarVagoes(Locomotivas* locomotiva, Vagao* vagao1, Vagao* vagao2){
         if(vagao1->anterior) vagao1->anterior = vagao2;
         else locomotiva->locomotiva.vagoes->primeiro = vagao2;
         
-        if(vagao1->proximo) vagao1->proximo->anterior = vagao2;
-        else locomotiva->locomotiva.vagoes->ultimo = vagao2;
+        if(vagao2->proximo) vagao2->proximo->anterior = vagao1;
+        else locomotiva->locomotiva.vagoes->ultimo = vagao1;
 
         vagao1->proximo = vagao2->proximo;
         vagao2->anterior = vagao1->anterior;

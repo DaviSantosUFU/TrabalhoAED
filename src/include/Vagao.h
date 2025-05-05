@@ -21,8 +21,8 @@ struct VagaoCarga{
 struct VagaoPassageiro{
     int id;
     int assentos;
-    int peso_maximo;
-    int peso_atual;    
+    float peso_maximo;
+    float peso_atual;    
 };
 
 struct Vagao{
