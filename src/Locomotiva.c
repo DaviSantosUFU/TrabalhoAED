@@ -169,7 +169,7 @@ void imprimeVagoesComLocomotiva(Vagoes* vagoes){
                    temp->dados.carga.id, temp->dados.carga.carga,
                    temp->dados.carga.peso_maximo, temp->dados.carga.peso_atual);
         }else if(temp->tipo == PASSAGEIRO) {
-            printf("\tVagao de Passageiros ID: %d, Assentos: %d, Peso Maximo: %d, Peso Atual: %d\n",
+            printf("\tVagao de Passageiros ID: %d, Assentos: %d, Peso Maximo: %.2f, Peso Atual: %.2f\n",
                    temp->dados.passageiro.id, temp->dados.passageiro.assentos,
                    temp->dados.passageiro.peso_maximo, temp->dados.passageiro.peso_atual);
         }
